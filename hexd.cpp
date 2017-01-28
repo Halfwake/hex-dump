@@ -24,7 +24,7 @@ void bad_file(char * file_name) {
 Check if byte is printable ASCII.
 */
 int is_printable(char byte) {
-  return (32 <= byte) && (byte <= 176);
+  return (32 <= byte) && (byte <= 126);
 }
 
 /*
