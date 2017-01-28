@@ -91,14 +91,12 @@ values, and then their ascii values.
 void dump_file(std::ifstream & file) {
   char row[16] = {0};
   int line = 0;
-
-  // Not output for empty files.
-  if (file.peek() == std::ifstream::traits_type::eof()) {
-    return;
-  }
   
   while (!file.eof()) {
     file.read(row, 16);
+    if (file.gcount() == 0) {
+      return;
+    }
     dump_row(line, row, file.gcount(), 16 - file.gcount());
     for (int i = 0; i < 16; i++) {
       row[i] = 0;
